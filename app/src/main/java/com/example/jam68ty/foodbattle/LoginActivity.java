@@ -1,13 +1,20 @@
 package com.example.jam68ty.foodbattle;
 
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -18,6 +25,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button login;
     EditText memail, mpassword;
     TextView msignup;
+    LinearLayout mlayout;
 
     private FirebaseAuth auth;
 
@@ -29,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         memail = findViewById(R.id.email);
         mpassword = findViewById(R.id.password);
         msignup = findViewById(R.id.sign_up);
+        mlayout = findViewById(R.id.mylayout);
 
         login.setOnClickListener(this);
         msignup.setOnClickListener(this);
@@ -36,12 +45,41 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //init firebase auth
         auth = FirebaseAuth.getInstance();
 
-        //check already session , if ok->Dashboard
+        //check already session , if ok->Menu
+        if (auth.getCurrentUser() != null) {
+            startActivity(new Intent(LoginActivity.this, Menu.class));
+
+        }
+    }
+
+    public void onClick(View view) {
+        if (view.getId() == R.id.sign_up) {
+            startActivity(new Intent(LoginActivity.this, SignUp.class));
+            finish();
+        } else if (view.getId() == R.id.log_in_button) {
+            loginUser(memail.getText().toString(), mpassword.getText().toString());
+        }
+
 
     }
 
-    public void onClick(View View) {
+    private void loginUser(String email, final String password) {
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (!task.isSuccessful()) {
+
+                    if (password.length() < 6) {
+                        Snackbar snackbar = Snackbar.make(mlayout , "密碼必須超過6個字元", Snackbar.LENGTH_SHORT);
+                        snackbar.show();
+                    }
+                }
+
+
+                startActivity(new Intent(LoginActivity.this, Menu.class));
+            }
+        });
 
     }
 

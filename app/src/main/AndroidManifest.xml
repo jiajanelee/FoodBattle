@@ -30,6 +30,7 @@
         <activity android:name=".Success" />
         <activity android:name=".Fail" />
         <activity android:name=".Setting" />
+        <activity android:name=".Menu"></activity>
     </application>
 
 </manifest>

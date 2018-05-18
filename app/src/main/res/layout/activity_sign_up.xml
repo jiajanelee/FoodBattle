@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sign_up"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back"
@@ -26,7 +27,7 @@
             android:paddingBottom="15sp">
 
             <EditText
-                android:id="@+id/editText16"
+                android:id="@+id/account"
                 android:layout_width="200sp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10sp"
@@ -37,7 +38,7 @@
                 android:padding="7sp" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/check_account"
                 android:layout_width="wrap_content"
                 android:layout_height="40sp"
                 android:background="@drawable/rounded_button2"
@@ -54,7 +55,7 @@
             android:paddingBottom="15sp">
 
             <EditText
-                android:id="@+id/editText26"
+                android:id="@+id/sign_up_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_span="2"
@@ -73,7 +74,7 @@
             android:paddingBottom="15sp">
 
             <EditText
-                android:id="@+id/editText27"
+                android:id="@+id/sign_up_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_span="2"
@@ -91,7 +92,7 @@
             android:paddingBottom="15sp">
 
             <EditText
-                android:id="@+id/editText28"
+                android:id="@+id/check_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_span="2"
@@ -106,7 +107,7 @@
     </TableLayout>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/log_in_direct"
         android:layout_width="349sp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="128dp"
@@ -118,16 +119,16 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/register_button"
         android:layout_width="158sp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="10sp"
-        android:layout_marginEnd="75sp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_button"
         android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="@+id/textView2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 </android.support.constraint.ConstraintLayout>
