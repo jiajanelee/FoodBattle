@@ -87,7 +87,7 @@
                 android:textColor="@color/darkGray" />
 
             <Button
-                android:id="@+id/email_sign_in_button"
+                android:id="@+id/log_in_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="135dp"
                 android:layout_height="match_parent"
